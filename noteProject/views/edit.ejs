@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit File</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <a href="/"  class="text-blue-600 -3 mb-4 inline-block" >HomePage</a>
+    <div class="bg-white p-6 rounded-lg shadow-md w-full sm:w-80 mx-auto mt-10">
+        <form action="/edit" method="post" class="space-y-4">
+            <!-- Display the current filename as a non-editable input -->
+            <input type="text" name="previous_file" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-gray-600" value="<%= filename %>" readonly>
+
+            <!-- Display the current file data in a non-editable textarea -->
+            <textarea name="filedata" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-gray-600" readonly><%= filedata %></textarea>
+
+            <!-- Editable field for the new filename -->
+            <input type="text" name="new_filename" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" placeholder="New Filename">
+
+            <!-- Editable field for the new file data -->
+            <textarea name="new_filedata" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" placeholder="New Description"></textarea>
+
+            <!-- Submit button -->
+            <input type="submit" value="Update" class="w-full p-3 bg-blue-500 text-white rounded-md cursor-pointer hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </form>
+    </div>
+</body>
+</html>
