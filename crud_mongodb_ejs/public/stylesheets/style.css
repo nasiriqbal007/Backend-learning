@@ -1,0 +1,58 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+   
+    font-family: 'Roboto', sans-serif;
+    background-color: rgb(49, 45, 45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  h1{
+    color: grey;
+    font-size: 30px;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  /* Form Container */
+  .form-container {
+    background: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  form {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+  
+  input[type="text"] {
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background: #444;
+    color: aliceblue;
+  }
+  
+  input[type="submit"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #007acc;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  input[type="submit"]:hover {
+    background: #005f99;
+  }
+  
