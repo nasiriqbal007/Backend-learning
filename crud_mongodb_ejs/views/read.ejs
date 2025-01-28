@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Read User</title>
+    <link rel="stylesheet" href="/stylesheets/read.css" />
+  </head>
+  <body>
+    <a href="/">Homepage</a>
+    <h1>Read Users</h1>
+    <div class="card-container">
+      <% users.forEach(user => { %>
+      <div class="user-card">
+        <img src="<%= user.image %>" />
+        <div class="user-info">
+          <h2><%= user.name %></h2>
+          <p><%= user.email %></p>
+          <div class="buttons">
+            <a href="/update/<%= user._id %>">Update</a>
+            <a href="/delete/<%= user._id %>">Delete</a>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </body>
+</html>
