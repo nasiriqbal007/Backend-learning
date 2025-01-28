@@ -1,4 +1,4 @@
-/* General Reset */
+
 * {
     margin: 0;
     padding: 20px;
@@ -15,6 +15,7 @@
     flex-direction: column;
   }
   h1{
+    padding-top: 10px;
     color: grey;
     font-size: 30px;
     text-align: center;
