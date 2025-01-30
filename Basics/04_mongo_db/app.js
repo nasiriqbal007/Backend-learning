@@ -7,14 +7,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
 app.get("/", (req, res) => {
     res.render("index")
-})
+});
 
+//Read all user
 app.get("/read", async (req, res) => {
     let users = await usermodel.find();
     res.render("read", { users })
-})
+});
+
+//Create a user
 app.post("/create", async (req, res) => {
     const { name, email, image } = req.body;
     let user = await usermodel.create({
@@ -25,12 +29,16 @@ app.post("/create", async (req, res) => {
     res.redirect("/read")
 
 });
+
+//get user by id
 app.get("/update/:id", async (req, res) => {
 
     let user = await usermodel.findOne({ _id: req.params.id });
     res.render("update", { user })
 
 });
+
+//update a user by id
 app.post("/update/:id", async (req, res) => {
     const { name, email, image } = req.body;
     let user = await usermodel.findOneAndUpdate({ _id: req.params.id }, {
@@ -45,11 +53,11 @@ app.post("/update/:id", async (req, res) => {
 
 });
 
-
+//delete user by id
 app.get("/delete/:id", async (req, res) => {
     let user = await usermodel.findByIdAndDelete(req.params.id);
     res.redirect("/read");
 });
 
 
-app.listen(3000)
+app.listen(3000);
