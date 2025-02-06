@@ -1,0 +1,96 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-900 text-white">
+    <div class="max-w-xl mx-auto my-8 p-4 relative">
+      <!-- Logout Button -->
+      <form action="/logout" method="POST" class="absolute top-4 right-4">
+        <button
+          type="submit"
+          class="bg-red-500 text-white px-3 py-1 rounded-md"
+        >
+          Logout
+        </button>
+      </form>
+
+      <!-- Profile Info Card -->
+      <div class="bg-gray-800 p-4 rounded-lg shadow-lg mb-6 text-center">
+        <h1 class="text-2xl font-semibold mb-2">Profile</h1>
+        <p class="text-lg">Name: <%= user.name %></p>
+        <p class="text-lg">Username: <%= user.username %></p>
+        <p class="text-lg">Email: <%= user.email %></p>
+        <p class="text-lg">Age: <%= user.age %></p>
+      </div>
+
+      <!-- Post Card Section -->
+      <div class="bg-gray-800 p-4 rounded-lg shadow-lg mb-6">
+        <h2 class="text-xl text-center font-semibold mb-2">Create Post</h2>
+
+        <!-- Title and Content Input for Post -->
+        <form action="/createPost" method="POST" class="space-y-3">
+          <div>
+            <label for="title" class="font-medium">Title</label>
+            <input
+              type="text"
+              name="title"
+              placeholder="Enter title"
+              class="w-full p-2 border rounded-md bg-gray-700 text-white"
+            />
+          </div>
+          <div>
+            <label for="content" class="font-medium">Content</label>
+            <textarea
+              name="content"
+              placeholder="Enter content"
+              class="w-full p-2 border rounded-md bg-gray-700 text-white"
+            ></textarea>
+          </div>
+          <div class="text-center">
+            <input
+              type="submit"
+              value="Create Post"
+              class="bg-blue-500 text-white px-4 py-2 rounded-md cursor-pointer"
+            />
+          </div>
+        </form>
+      </div>
+
+      <!-- Display User's Posts -->
+      <% if (user.posts && user.posts.length > 0) { %>
+      <h2 class="text-xl text-center font-semibold mb-2">Your Posts</h2>
+      <div class="space-y-3">
+        <% user.posts.forEach(post => { %>
+        <div class="bg-gray-800 p-4 rounded-lg shadow-lg">
+          <h3 class="text-lg font-semibold mb-1"><%= post.title %></h3>
+          <p class="text-sm mb-3"><%= post.content %></p>
+
+          <!-- Update and Delete Buttons -->
+          <div class="flex justify-between">
+            <form action="/updatePost/<%= post._id %>" method="GET">
+              <input
+                type="submit"
+                value="Update"
+                class="bg-yellow-500 text-white px-3 py-1 rounded-md cursor-pointer"
+              />
+            </form>
+            <form action="/deletePost/<%= post._id %>" method="POST">
+              <input
+                type="submit"
+                value="Delete"
+                class="bg-red-500 text-white px-3 py-1 rounded-md cursor-pointer"
+              />
+            </form>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+      <% } else { %>
+      <p class="text-center text-gray-500">No posts yet!</p>
+      <% } %>
+    </div>
+  </body>
+</html>
